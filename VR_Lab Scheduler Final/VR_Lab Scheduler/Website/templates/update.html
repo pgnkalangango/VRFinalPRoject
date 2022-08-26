@@ -1,0 +1,26 @@
+{% extends "base.html" %} 
+{% block body %}
+
+<header>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+</header>
+
+<div class = "form">
+    <form action="/" method="POST">
+      <label for="date">Start Date</label>
+      <input type="date" name="content" id="content" placeholder="MM/DD/YYYY" value="{{task.content}}">
+      <br/>
+      <label for="date">End Date</label>
+      <input type="date" name="content" id="content" placeholder="MM/DD/YYYY" value="{{task.content}}">
+      <br/>
+      <label for="time">Start Time</label>
+      <input type="time" name="content" id="content" placeholder="HH:MM" value="{{task.content}}">
+      <br/>
+      <label for="time">End Time</label>
+      <input type="time" name="content" id="content" placeholder="HH:MM" value="{{task.content}}">
+      <br/>
+      <input type="submit" value="Schedule an Appointment">
+    </form>
+</div>
+
+{% endblock %}

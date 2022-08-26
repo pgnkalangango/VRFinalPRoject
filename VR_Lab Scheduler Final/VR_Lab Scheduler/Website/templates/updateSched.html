@@ -1,0 +1,53 @@
+{% extends "base.html" %} 
+{% block title %}View Schedule{% endblock %}
+{% block content %}
+
+<header>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+</header>
+<h1 align="center">Welcome to VR Scheduler</h1>
+<br/>
+
+<h5>Enter Date and Time to Schedule Appointment</h5>
+
+<form action="/updateSched/{{tasks.id}}" METHOD="POST">
+  <div class="form-group">
+    <label for="startdatetime">Name,IDNumber-VR #</label>
+    <input
+      type="text"
+      class="form-control"
+      id="user name"
+      name="userName"
+      value="{{tasks.name}}"
+    />
+  </div>
+  <div class="form-group">
+    <label for="startdatetime">Please Select Date:</label>
+    <input
+      type="date"
+      class="form-control"
+      id="startdatetime"
+      name="startdatetime"
+      value="{{tasks.startTime}}"
+    />
+  </div>  
+  <div class="form-group">
+  <span class="input-group-addon">Original Time: {{tasks.hours}}</span>
+  <p>Please selet new time:</p>
+  <select name="comp_select" class="selectpicker form-control">
+    <option>09:00 AM</option>
+    <option>10:00 AM</option>
+    <option>11:00 AM</option>
+    <option>12:00 PM</option>
+    <option>01:00 PM</option>
+    <option>02:00 PM</option>
+    <option>03:00 PM</option>
+    <option>04:00 PM</option>
+  </select>
+  <br/>
+  <button type="submit" class="btn btn-warning">Submit </button>
+  <a class="btn btn-warning" href="{{url_for('views.schedule_list')}}">Cancel</a>
+</div>
+</form>
+
+{% endblock %}

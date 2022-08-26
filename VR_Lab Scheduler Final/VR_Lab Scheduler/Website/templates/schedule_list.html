@@ -1,0 +1,37 @@
+{% extends "base.html" %} 
+{% block title %}View Schedule{% endblock %}
+{% block content %}
+
+<header>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+</header>
+
+<h1 align="center">Current Bookings:</h1>
+<br/>
+<div><a class="btn btn-outline-primary btn-lg btn-block" href="{{url_for('views.calendar')}}">Calendar View</a></div>
+<br/>
+<form method="POST"></form>
+{% if tasks|length < 1 %}
+<p>There are no Appointment to Display.</p>
+<br/>
+<a class="btn btn-warning" href="{{url_for('views.schedule')}}">Click to Schedule</a>
+<a class="btn btn-warning" href="{{url_for('views.home')}}">Go Back</a>
+{% else %}
+<div class="container">
+<div class="list-group">
+  {% for task in tasks %}
+  <div class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{task.name}}</h5>
+    </div>
+    <p class="mb-1">Date: {{task.startTime}}</p>
+    <p class="mb-1">Time: {{ task.hours }}</p>
+    <a  href="/delete/{{task.id}}"><button type="button" class="btn btn-danger" >Delete</button></a>
+    <a  href="{{url_for('views.updateSched',id=task.id)}}"><button type="button" class="btn btn-info" >Update</button></a>
+    
+  </div>
+  {% endfor %}
+</div>
+</div>
+{% endif %}
+{% endblock %}

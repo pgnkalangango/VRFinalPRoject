@@ -1,0 +1,100 @@
+{% extends "base.html" %} 
+{% block title %}Home{% endblock %}
+{% block content %}
+<br/>
+<div class="line"></div>
+<div class="wrapper">
+  <header role="banner">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <nav role="navigation">
+      <h3 align="center">Welcome to VR-LAB Scheduler</h3>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">VR-LAB Scheduler</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto text-right">
+              <a class="nav-item nav-link active" id="home" href="/">Home</a>
+              <a class="nav-item nav-link" href="{{url_for('views.schedule')}}">Schedule an Appointment</a>
+              <a class="nav-item nav-link" href="{{url_for('views.schedule_list')}}">View Schedule</a>
+              <a class="nav-item nav-link" id="logout" href="/logout">Log out</a>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </nav>
+</header>
+<body>
+  <br/>
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 4</div>
+      <img src="{{url_for('static', filename='images/vr1.jpg')}}" style="width:100%">
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 4</div>
+      <img src="{{url_for('static', filename='images/vr2.jpg')}}" style="width:100%">
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 4</div>
+      <img src="{{url_for('static', filename='images/vr3.jpg')}}" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">4 / 4</div>
+      <img src="{{url_for('static', filename='images/vr4.jpg')}}" style="width:100%">
+    </div>
+  
+    <br>
+    <div style="text-align:center">
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span>
+      <span class="dot"></span> 
+      
+    </div>
+
+  </div>
+  <script>
+      let slideIndex = 0;
+      showSlides();
+
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}    
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+      setTimeout(showSlides, 7000); 
+    }
+    </script>
+</body>
+
+<footer>
+  <nav role="navigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-brand">
+        <a class="nav-item nav-link active" href="#">Home</a>
+        <a class="nav-item nav-link" href="{{url_for('views.schedule')}}">Schedule an Appointment</a>
+        <a class="nav-item nav-link" href="{{url_for('views.schedule_list')}}">View Schedule</a>
+      </ul>
+      <br/>
+    </div>
+  </nav>
+    <p align="center" class="copy">&copy; Ali Shehram PG Design 2022</p>
+</footer>
+<div class="line"></div>
+{% endblock %}
